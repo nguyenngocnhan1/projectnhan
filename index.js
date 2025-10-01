@@ -2,8 +2,8 @@ const express = require('express');
 const app = express();
 const port = 86;
 
-app.get('/api/hello', (req, res) => {
-  res.send('Hello from Node.js API with Docker & CI/CD!');
+app.get("/api/hello", (req, res) => {
+  res.json({ message: "🚀 CI/CD working! Version 2 deployed." });
 });
 
 app.listen(port, () => {
