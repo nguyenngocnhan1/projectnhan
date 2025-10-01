@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  backend-learnking:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: nguyenngocnhan1/projectnhan:latest
+    container_name: projectnhan-backend
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+    ports:
+      - "5005:86"
+    restart: always
