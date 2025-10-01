@@ -1,23 +1,17 @@
-# Stage 1: Build
-FROM mcr.microsoft.com/dotnet/sdk:9.0 AS build
-WORKDIR /src
-
-# Copy toàn bộ source
-COPY . .
-
-# Restore dependencies
-RUN dotnet restore LearnKing.sln
-
-# Publish ứng dụng
-RUN dotnet publish LearnKing.Api/LearnKing.Api.csproj -c Release -o /app/publish /p:UseAppHost=false
-
-# Stage 2: Runtime
-FROM mcr.microsoft.com/dotnet/aspnet:9.0 AS runtime
+# Stage 1: build
+FROM node:20-alpine AS build
 WORKDIR /app
 
-COPY --from=build /app/publish .
+COPY package*.json ./
+RUN npm install
 
-ENV ASPNETCORE_URLS=http://+:86
+COPY . .
+
+# Stage 2: runtime
+FROM node:20-alpine
+WORKDIR /app
+
+COPY --from=build /app .
+
 EXPOSE 86
-
-ENTRYPOINT ["dotnet", "LearnKing.Api.dll"]
+CMD ["npm", "start"]

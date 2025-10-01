@@ -1,14 +1,10 @@
-version: '3.8'
-
 services:
-  backend-learnking:
+  node-api:
     build:
       context: .
       dockerfile: Dockerfile
     image: nguyenngocnhan1/projectnhan:latest
-    container_name: projectnhan-backend
-    environment:
-      - ASPNETCORE_ENVIRONMENT=Production
+    container_name: node-api
     ports:
       - "5005:86"
     restart: always
