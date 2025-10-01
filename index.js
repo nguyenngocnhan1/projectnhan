@@ -3,7 +3,7 @@ const app = express();
 const port = 86;
 
 app.get("/api/hello", (req, res) => {
-  res.json({ message: "🚀 CI/CD wdsfsafdasorkdslfmakdsmfdsming! Version 2 deployed." });
+  res.json({ message: "🚀 CI/CD wdsfsafsldflssdsadasorkdslfmakdsmfdsming! Version 2 deployed." });
 });
 
 app.listen(port, () => {
